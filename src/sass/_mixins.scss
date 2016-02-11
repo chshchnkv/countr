@@ -1,0 +1,106 @@
+@mixin cover($w: true) {
+  display: block;
+
+  @if ($w == true) {
+    width: 100%;
+    height: auto;    
+  } @else {
+    width: auto;
+    height: 100%;
+  }
+}
+
+
+@mixin list-init {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  li {
+//    padding: 0;
+    
+    &:before,
+    &:after {
+      content: none;
+    }
+  }
+}
+
+
+@mixin transition ($what: all, $duration: .2s, $timing: ease-out, $delay: 0) {
+  transition-property: $what;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+  transition-delay: $delay;
+}
+
+
+@mixin centerV {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+@mixin centerH {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+@mixin centerHV {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+@mixin numbered-text {
+  &:before, &:after {
+    content: " — ";
+  }
+}
+
+
+@mixin generate-link($color: $color-text-light, $underline: false, $hover-underline: false) {
+  color: $color;
+  
+  @if ($underline == true) {
+    text-decoration: underline;
+  } @else {
+    text-decoration: none;
+  }
+  
+    &:hover {
+      @if ($hover-underline == true) {    
+        text-decoration: underline;
+      } @else {
+        text-decoration: none;
+    }
+  }
+}
+
+
+@mixin outline ($size: 1px, $type: dotted, $color: rgba(255, 0, 0, 1)) {
+  
+  @if variable-exists(outline-debug) {
+    outline: $size $type $color;
+  }
+}
+
+
+@for $i from 0 through 20 {
+  .mt-#{$i*5} {margin-top: 5px * $i}
+  .ml-#{$i*5} {margin-left: 5px * $i}
+  .mb-#{$i*5} {margin-bottom: 5px * $i}
+  .mr-#{$i*5} {margin-right: 5px * $i}
+  .m-#{$i*5} {margin: 5px * $i}
+}

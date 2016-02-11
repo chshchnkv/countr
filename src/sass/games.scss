@@ -1,0 +1,36 @@
+.countr-games {
+  @include transition;
+  padding: $default-padding;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: $color-header-bg;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.5);
+
+  &__item {
+    padding-left: $default-padding * 5;
+    padding-top: $default-padding;
+    padding-bottom: $default-padding;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color-header-bg, 20);
+    }
+
+    & + & {
+      margin-top: $default-padding;
+    }
+
+    &--active {
+      font-weight: bolder;
+
+      &:before {
+        content: '\2022';
+        display: inline-block;
+        vertical-align: top;
+        width: $default-padding * 3;
+        margin-left: - $default-padding * 3;
+      }
+    }
+  }
+}

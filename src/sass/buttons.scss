@@ -1,0 +1,39 @@
+$default-size: 44px;
+
+.countr-btn {
+  @include transition;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $default-size;
+  height: $default-size;
+
+  user-select: none;
+  cursor: pointer;
+
+  &--half {
+    width: ($default-size / 2);
+    height: ($default-size / 2);
+  }
+
+  &--2x {
+    width: ($default-size * 2);
+    height: ($default-size * 2);
+  }
+
+  &--circle {
+    border: 2px solid $text-color;
+    border-radius: 50%;
+  }
+
+  & > * {
+    @include outline($color: blue);
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}

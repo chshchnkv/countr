@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>COUNTR</title>
+</head>
+<body>
+  <header class="countr-header">
+    <h1 class="countr-header__title">countr<span class="countr-header__current-game"></span></h1>
+    <div class="countr-header__buttons">
+      <div class="countr-header__reset  countr-btn"><i class="fa  fa-refresh"></i></div>
+      <div class="countr-header__add  countr-btn"><i class="fa  fa-plus"></i></div>
+    </div>
+    <div class="countr-header__games  countr-games  hidden">
+    </div>
+  </header>
+  <main class="countr-container">
+  </main>
+  <template id="countr">
+    <div class="countr">
+      <div class="countr__delete  countr-btn  countr-btn--half"><i class="fa fa-times"></i></div>
+      <h2 class="countr__header"></h2>
+      <div class="countr__controls">
+        <div class="countr__sub  countr-btn  countr-btn--circle"><i class="fa  fa-minus"></i></div>
+        <div class="countr__value"></div>
+        <div class="countr__add  countr-btn  countr-btn--circle"><i class="fa fa-plus"></i></div>
+      </div>
+    </div>
+  </template>
+  <template id="game">
+    <div class="countr-games__item" data-game=""></div>
+  </template>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
