@@ -6,7 +6,7 @@
   left: 0;
 
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 
@@ -22,10 +22,12 @@
   }
 
   &__title {
+//    flex-grow: 1;
     position: relative;
 
     margin: 0;
     padding: 0;
+    padding-right: 4rem;
 
     font-size: 1em;
     line-height: 1;
@@ -34,6 +36,18 @@
 
     cursor: pointer;
     user-selection: none;
+
+    &:after {
+      content: '\203A';
+
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      display: block;
+
+      transform: rotateZ(90deg);
+    }
   }
 
   &__buttons {
@@ -45,12 +59,17 @@
   &__current-game {
     position: absolute;
     top: 0;
-    font-size: 0.3em;
+    left: 0;
+
+    display: block;
+
+    font-size: 0.2em;
   }
 
   &__games {
-    width: 100%;
-    flex-basis: 100%;
+    position: absolute;
+    top: $header-height;
+    left: 0;
 
     font-size: 0.5em;
   }
