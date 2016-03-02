@@ -40,6 +40,7 @@ Countr.prototype.render = function() {
   this._subElement = this.element.querySelector('.countr__sub');
   this._addElement = this.element.querySelector('.countr__add');
   this._deleteElement = this.element.querySelector('.countr__delete');
+  this._stateImage = this.element.querySelector('.countr__state-image>img');
 
   this._headerElement = this.element.querySelector('.countr__header');
   this._headerElementEditor = this.element.querySelector('.countr__header-editor');
@@ -69,6 +70,11 @@ Countr.prototype._update = function() {
 
   setTextContent(this._headerElement, `${this.name} ${loopName}`);
   setTextContent(this._valueElement, this.value);
+  this._updateImage();
+};
+
+Countr.prototype._updateImage = function() {
+  this._stateImage.src = this._getActiveGame().getStateImageSrc(this);
 };
 
 Countr.prototype.change = function(value) {

@@ -28,22 +28,24 @@ Editor.prototype._onEditorBlur = function() {
 Editor.prototype._onEditorKeyDown = function(event) {
   switch (event.keyCode) {
     case 27:
-      this.reset();
       this.hide();
+      this.reset();
       break;
     case 13:
-      this.set();
       this.hide();
+      this.set();
       break;
   }
 };
 
 Editor.prototype.set = function() {
-  this._value = this.element.value;
-//  var evt = document.createEvent('CustomEvent');
-//  evt.initEvent('change', false, false, this._value);
-  var event = new CustomEvent('change', { 'detail': this._value });
-  this.element.dispatchEvent(event);
+  if (this._value !== this.element.value) {
+    this._value = this.element.value;
+  //  var evt = document.createEvent('CustomEvent');
+  //  evt.initEvent('change', false, false, this._value);
+    var event = new CustomEvent('change', { 'detail': this._value });
+    this.element.dispatchEvent(event);
+  }
 };
 
 Editor.prototype.reset = function() {

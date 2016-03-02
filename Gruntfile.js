@@ -145,22 +145,6 @@ module.exports = function(grunt) {
           }
         ]
       }
-    },
-
-    concat: {
-      main: {
-        src: [
-          'node_modules/tapjs/dist/tap.js',
-          'src/js/inherit.js',
-          'src/js/templates.js',
-          'src/js/countr.js',
-          'src/js/countrs.js',
-          'src/js/game.js',
-          'src/js/games.js',
-          'src/js/main.js'
-        ],
-        dest: 'build/js/scripts.js'
-      }
     }
   };
 

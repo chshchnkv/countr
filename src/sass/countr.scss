@@ -74,4 +74,13 @@
     user-select: none;
   }
 
+  &__state-image {
+    width: $default-size;
+    height: $default-size;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

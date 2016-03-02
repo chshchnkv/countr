@@ -31,6 +31,10 @@ Game.prototype.isValidValue = function(value) {
   return value >= this.minimalValue;
 };
 
+Game.prototype.getStateImageSrc = function() {
+  return './img/blank.png';
+};
+
 Game.prototype.render = function(id) {
   this.element = getElementFromTemplate('template-game');
   this._label = this.element.querySelector('label');
