@@ -1,26 +1,95 @@
 import Games from'games';
-import Countrs from 'countrs';
+import CountrData from 'countr-data';
+import Countr from 'countr';
 
+/**
+* Все счётчики приложения
+* @type {CountrData[]}
+*/
+var countrsData = [];
+
+/**
+* Отрисованные счётчики
+* @type {Countr[]}
+*/
+var renderedCountrs = [];
+
+/**
+* Список доступных игр
+* @type {Games}
+*/
 var gamesList = new Games();
 gamesList.render();
 gamesList.element.addEventListener('change', () => {
-  countrsList.reset();
-}, true);
+  resetCountrs();
+});
 
-var countrsList = new Countrs(gamesList);
+/**
+* Контейнер для отрисованных счётчиков
+* @type {HTMLElement}
+*/
+var countrsContainer = document.querySelector('.countr-container');
 
-var headerTitle = document.querySelector('.countr-header__title');
-var addCounter = document.querySelector('.countr-header__add');
-var resetCounters = document.querySelector('.countr-header__reset');
+/**
+* Заголовок приложения
+* @type {HTMLElement}
+*/
+var headerTitle = document.querySelector('.countr-header');
+headerTitle.addEventListener('click', (event) => {
+  if (event.target.classList.contains('countr-header__title')) {
+    gamesList.toggle();
+  }
+});
 
-/// Сброс всех счётчиков в исходное состояние для текущей выбранной игры
-resetCounters.addEventListener('click', onResetCountrs);
+/**
+* Кнопка добавления счётчика
+* @type {HTMLElement}
+*/
+var addCountrElement = document.querySelector('.countr-header__add');
+addCountrElement.addEventListener('click', () => {
+  addCountr();
+});
 
-/// добавление нового счётчика
-addCounter.addEventListener('click', onAddCountr);
+/**
+* Кнопка сброса счётчиков
+* @type {HTMLElement}
+*/
+var resetCountrsElement = document.querySelector('.countr-header__reset');
+resetCountrsElement.addEventListener('click', () => {
+  resetCountrs();
+});
 
-/// отображение списка доступных игр
-headerTitle.addEventListener('click', onHeaderTitleClick);
+/**
+* Добавление нового счётчика
+*/
+var addCountr = function() {
+  let newCountrData = new CountrData('Счётчик ' + (+countrsData.length + 1), gamesList);
+  countrsData.push(newCountrData);
+
+  let newCountr = new Countr(newCountrData);
+  newCountr.events.addSubscriber(window);
+  renderedCountrs.push(newCountr);
+
+  countrsContainer.appendChild(newCountr.render());
+  newCountr.editName();
+};
+
+/**
+* Обработчик запроса на удаление счётчика
+*/
+window._onDeleteCountr = function(countr) {
+  countrsData.splice(countrsData.indexOf(countr._data), 1);
+  renderedCountrs.splice(renderedCountrs.indexOf(countr), 1);
+};
+
+/**
+* Сброс всех счётчиков в минимальное значение
+*/
+var resetCountrs = function() {
+  countrsData.forEach((item) => {
+    item.resetValue();
+  });
+};
 
 /// покрутка списка приводит к появлению тени у заголовка
 var scrollTimeOut;
@@ -36,17 +105,3 @@ window.addEventListener('scroll', function() {
     }
   }, 100);
 });
-
-function onAddCountr() {
-  countrsList.add();
-}
-
-function onResetCountrs() {
-  countrsList.reset();
-}
-
-function onHeaderTitleClick(event) {
-  if (event.target.classList.contains('countr-header__title')) {
-    gamesList.toggle();
-  }
-}

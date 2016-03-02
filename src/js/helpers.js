@@ -27,3 +27,16 @@ export function setTextContent(element, value) {
     element.appendChild(textNode);
   }
 }
+
+export function getSign(number) {
+  var sign = 0;
+  if (number) {
+    sign = number < 0 ? -1 : 1;
+  }
+  return sign;
+}
+
+export function getRandomColorIndex() {
+  return Math.floor(Math.random() * 20 + 1);
+}
+

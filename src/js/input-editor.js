@@ -21,7 +21,7 @@ Editor.prototype.hide = function() {
 };
 
 Editor.prototype._onEditorBlur = function() {
-  this.set();
+  this._commit();
   this.hide();
 };
 
@@ -29,30 +29,23 @@ Editor.prototype._onEditorKeyDown = function(event) {
   switch (event.keyCode) {
     case 27:
       this.hide();
-      this.reset();
       break;
     case 13:
       this.hide();
-      this.set();
+      this._commit();
       break;
   }
 };
 
-Editor.prototype.set = function() {
+Editor.prototype._commit = function() {
   if (this._value !== this.element.value) {
     this._value = this.element.value;
-  //  var evt = document.createEvent('CustomEvent');
-  //  evt.initEvent('change', false, false, this._value);
-    var event = new CustomEvent('change', { 'detail': this._value });
+    var event = new CustomEvent('changevalue', { 'detail': this._value });
     this.element.dispatchEvent(event);
   }
 };
 
-Editor.prototype.reset = function() {
-  this.element.value = this._value;
-};
-
-Editor.prototype.value = function() {
+Editor.prototype.getValue = function() {
   return this._value;
 };
 

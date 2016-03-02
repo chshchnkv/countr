@@ -17,26 +17,24 @@ function GameImaginarium() {
 
 inherit(GameImaginarium, Game);
 
-GameImaginarium.prototype.validateValue = function(countr, value) {
-  if (countr) {
-    let curLoop = countr.loop;
-    let newValue = value;
+GameImaginarium.prototype.validateValue = function(curLoop, newValue) {
 
-    if (newValue < this.minimalValue) {
-      curLoop--;
-      newValue = this.loopSize - value;
-    } else if (newValue > this.loopSize) {
-      curLoop++;
-    }
-
-    countr.value = newValue % (this.loopSize + this.minimalValue);
-    countr.loop = curLoop;
+  if (newValue < this.minimalValue) {
+    curLoop--;
+    newValue = this.loopSize;
+  } else if (newValue > this.loopSize) {
+    curLoop++;
+    newValue = this.minimalValue;
   }
+  return {
+    'newValue': newValue,
+    'newLoop': curLoop
+  };
 };
 
 GameImaginarium.prototype.getStateImageSrc = function(countr) {
   if (countr) {
-    switch(countr.value) {
+    switch(countr.getValue()) {
       case 3:
       case 18:
       case 25:

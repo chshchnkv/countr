@@ -21,10 +21,11 @@ Game.prototype.isOver = function(countr) {
   return countr !== null;
 };
 
-Game.prototype.validateValue = function(countr, value) {
-  if (countr) {
-    countr.value = value;
-  }
+Game.prototype.validateValue = function(curLoop, value) {
+  return {
+    'newValue': value,
+    'newLoop': curLoop
+  };
 };
 
 Game.prototype.isValidValue = function(value) {
