@@ -1,43 +1,49 @@
-'use strict';
-(function(gl) {
-  var gamesList = new gl.Games();
-  gamesList.render();
-  var countrsList = new gl.Countrs(gamesList);
+import Games from'games';
+import Countrs from 'countrs';
 
-  var header = document.querySelector('.countr-header');
-  var addCounter = document.querySelector('.countr-header__add');
-  var resetCounters = document.querySelector('.countr-header__reset');
+var gamesList = new Games();
+gamesList.render();
 
-  /// Сброс всех счётчиков в исходное состояние для текущей выбранной игры
-  resetCounters.addEventListener('tap', function() {
-    countrsList.reset();
-  });
+var countrsList = new Countrs(gamesList);
 
-  /// добавление нового счётчика
-  addCounter.addEventListener('tap', function() {
-    countrsList.add();
-  });
+var headerTitle = document.querySelector('.countr-header__title');
+var addCounter = document.querySelector('.countr-header__add');
+var resetCounters = document.querySelector('.countr-header__reset');
 
-  /// отображение списка доступных игр
-  header.addEventListener('tap', function(event) {
-    if (event.target.classList.contains('countr-header__title')) {
-      gamesList.toggle();
-    }
-  });
+/// Сброс всех счётчиков в исходное состояние для текущей выбранной игры
+resetCounters.addEventListener('click', onResetCountrs);
 
-  /// покрутка списка приводит к появлению тени у заголовка
-  var scrollTimeOut;
-  gl.addEventListener('scroll', function() {
-    clearTimeout(scrollTimeOut);
-    scrollTimeOut = setTimeout(function() {
-      if (gl.pageYOffset > 0) {
-        if (!header.classList.contains('countr-header--shadow')) {
-          header.classList.add('countr-header--shadow');
-        }
-      } else {
-        header.classList.remove('countr-header--shadow');
+/// добавление нового счётчика
+addCounter.addEventListener('click', onAddCountr);
+
+/// отображение списка доступных игр
+headerTitle.addEventListener('click', onHeaderTitleClick);
+
+/// покрутка списка приводит к появлению тени у заголовка
+var scrollTimeOut;
+window.addEventListener('scroll', function() {
+  clearTimeout(scrollTimeOut);
+  scrollTimeOut = setTimeout(function() {
+    if (window.pageYOffset > 0) {
+      if (!headerTitle.classList.contains('countr-header--shadow')) {
+        headerTitle.classList.add('countr-header--shadow');
       }
-    }, 100);
-  });
+    } else {
+      headerTitle.classList.remove('countr-header--shadow');
+    }
+  }, 100);
+});
 
-})(window);
+function onAddCountr() {
+  countrsList.add();
+}
+
+function onResetCountrs() {
+  countrsList.reset();
+}
+
+function onHeaderTitleClick(event) {
+  if (event.target.classList.contains('countr-header__title')) {
+    gamesList.toggle();
+  }
+}

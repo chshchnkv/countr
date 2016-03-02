@@ -91,15 +91,6 @@ module.exports = function(grunt) {
           spawn: false,
           livereload: true
         }
-      },
-
-      script: {
-        files: ['src/js/**/*.js', 'src/js/*.js'],
-        tasks: ['concat', 'uglify'],
-        options: {
-          spawn: false,
-          livereload: true
-        }
       }
     },
 
@@ -162,6 +153,7 @@ module.exports = function(grunt) {
       main: {
         src: [
           'node_modules/tapjs/dist/tap.js',
+          'src/js/inherit.js',
           'src/js/templates.js',
           'src/js/countr.js',
           'src/js/countrs.js',
@@ -170,14 +162,6 @@ module.exports = function(grunt) {
           'src/js/main.js'
         ],
         dest: 'build/js/scripts.js'
-      }
-    },
-
-    uglify: {
-      main: {
-        files: {
-          'build/js/scripts.min.js': ['build/js/scripts.js']
-        }
       }
     }
   };
@@ -188,10 +172,10 @@ module.exports = function(grunt) {
     'sass',
     'cmq',
     'postcss',
-    'cssmin',
+    'cssmin'/*,
     'imagemin',
     'concat',
-    'uglify'
+    'uglify'*/
   ]);
 
   grunt.initConfig(config);
