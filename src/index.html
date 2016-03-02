@@ -7,30 +7,46 @@
   <title>COUNTR</title>
 </head>
 <body>
+
   <header class="countr-header">
     <h1 class="countr-header__title">countr<span class="countr-header__current-game"></span></h1>
+
     <div class="countr-header__buttons">
       <div class="countr-header__reset  countr-btn"><i class="fa  fa-refresh"></i></div>
       <div class="countr-header__add  countr-btn"><i class="fa  fa-plus"></i></div>
     </div>
-    <div class="countr-header__games  countr-games  hidden">
-    </div>
+
+    <form class="countr-header__games  countr-games  hidden" action="">
+    </form>
   </header>
+
+
   <main class="countr-container">
   </main>
+
+
   <template id="countr">
     <div class="countr">
       <div class="countr__delete  countr-btn  countr-btn--half  fa fa-times"></div>
+
       <h2 class="countr__header"><input type="text" class="countr__header-editor  hidden"></h2>
+
       <div class="countr__controls">
         <div class="countr__sub  countr-btn  countr-btn--circle  fa  fa-minus"></div>
+
         <div class="countr__value"></div>
+
         <div class="countr__add  countr-btn  countr-btn--circle  fa  fa-plus"></div>
       </div>
+
     </div>
   </template>
+
   <template id="template-game">
-    <div class="countr-games__item" data-game=""></div>
+    <div class="countr-games__item  radiobutton">
+      <input type="radio" name="game-selector" id="">
+      <label for=""></label>
+    </div>
   </template>
   <script src="js/main.js"></script>
 </body>

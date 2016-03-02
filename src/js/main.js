@@ -3,6 +3,9 @@ import Countrs from 'countrs';
 
 var gamesList = new Games();
 gamesList.render();
+gamesList.element.addEventListener('change', () => {
+  countrsList.reset();
+}, true);
 
 var countrsList = new Countrs(gamesList);
 

@@ -4,9 +4,9 @@ import GameImaginarium from 'game-imaginarium';
 import GameImaginariumMult from 'game-imaginarium-mult';
 
 function Games() {
+  this._onGameChange = this._onGameChange.bind(this);
   this.element = document.querySelector('.countr-header__games');
-  this._onClick = this._onClick.bind(this);
-  this.element.addEventListener('click', this._onClick);
+  this.element.addEventListener('change', this._onGameChange);
 
   /// создаем игры
   this.noGame = new Game('Без игры', -Infinity);
@@ -23,20 +23,17 @@ function Games() {
 }
 
 Games.prototype.render = function() {
-  this._allGames.forEach((game) => {
-    this.element.appendChild(game.render());
-    if (this.noGame === game) {
-      game.makeActive(true);
-    }
+  this._allGames.forEach((game, index) => {
+    this.element.appendChild(game.render(`game${index}`));
   });
+  this.noGame.check();
 };
 
 Games.prototype.getActiveGame = function() {
-  let activeGames = this._allGames.filter((game) => {
-    return game.isActive;
-  });
-  if (activeGames.length > 0) {
-    return activeGames[0];
+  let activeGameElement = this.element.querySelector('input[type="radio"]:checked');
+  let gameIndex = activeGameElement.id.match(/game(\d*)/);
+  if (gameIndex.length > 1) {
+    return this._allGames[gameIndex[1]];
   }
   return null;
 };
@@ -53,14 +50,7 @@ Games.prototype.toggle = function() {
   this.element.classList.toggle('hidden');
 };
 
-Games.prototype._onClick = function(event) {
-  event.preventDefault();
-  var tappedElement = event.target;
-  if (tappedElement.classList.contains('countr-games__item')) {
-    this._allGames.forEach((game) => {
-      game.makeActive(game.element === tappedElement);
-    });
-  }
+Games.prototype._onGameChange = function() {
   this.toggle();
 };
 

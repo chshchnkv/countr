@@ -25,6 +25,8 @@ function Countr(name, initValue, parent) {
   this._onHeaderEditorChange = this._onHeaderEditorChange.bind(this);
 }
 
+Countr.prototype.loop = 0;
+
 Countr.prototype.render = function() {
   this.element = getElementFromTemplate('countr');
   /// определение нового цвета таким образом, чтобы он не совпадал с предыдущим
@@ -63,7 +65,9 @@ Countr.prototype.render = function() {
 };
 
 Countr.prototype._update = function() {
-  setTextContent(this._headerElement, this.name);
+  let loopName = (this._getActiveGame().loopSize > 0) ? `(круг: ${this.loop})` : '';
+
+  setTextContent(this._headerElement, `${this.name} ${loopName}`);
   setTextContent(this._valueElement, this.value);
 };
 
@@ -71,12 +75,10 @@ Countr.prototype.change = function(value) {
   this.set(this.value + (value || 1));
 };
 
-Countr.prototype.set = function(newValue) {
-  var game = this._parent._getCurrentGame();
-  if (game) {
-    if (game.isValidValue(newValue)) {
-      this.value = newValue;
-    }
+Countr.prototype.set = function(newValue, skipValidation) {
+  var game = this._getActiveGame();
+  if (game && !skipValidation) {
+    game.validateValue(this, newValue);
   } else {
     this.value = newValue;
   }
@@ -84,9 +86,10 @@ Countr.prototype.set = function(newValue) {
 };
 
 Countr.prototype.reset = function() {
-  var game = this._parent._getCurrentGame();
+  var game = this._getActiveGame();
   var curValue = this.value;
   var newValue = isFinite(game.minimalValue) ? game.minimalValue : 0;
+  this.loop = 0;
 
   if (curValue !== newValue) {
     var TIMES = 10;
@@ -95,14 +98,21 @@ Countr.prototype.reset = function() {
 
     var intervalTimerForReset = setInterval(() => {
       curValue = Math.floor(curValue + step);
-      this.set(curValue);
+      this.set(curValue, true);
 
       if (Math.abs(curValue - newValue) <= Math.abs(step)) {
         clearInterval(intervalTimerForReset);
-        this.set(newValue);
+        this.set(newValue, true);
       }
+
     }, TOTAL_RESET_TIME / TIMES);
+  } else {
+    this._update();
   }
+};
+
+Countr.prototype._getActiveGame = function() {
+  return this._parent._getCurrentGame();
 };
 
 Countr.prototype.editName = function() {
@@ -190,7 +200,6 @@ Countr.prototype._onHeaderTap = function() {
 };
 
 Countr.prototype._onHeaderEditorChange = function() {
-  this.name = this._headerEditor.value();
   this._update();
 };
 

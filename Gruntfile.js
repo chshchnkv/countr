@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
@@ -172,10 +170,7 @@ module.exports = function(grunt) {
     'sass',
     'cmq',
     'postcss',
-    'cssmin'/*,
-    'imagemin',
-    'concat',
-    'uglify'*/
+    'cssmin'
   ]);
 
   grunt.initConfig(config);
