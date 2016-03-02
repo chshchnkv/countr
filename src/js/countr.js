@@ -199,7 +199,8 @@ Countr.prototype._onHeaderTap = function() {
   this._headerEditor.show();
 };
 
-Countr.prototype._onHeaderEditorChange = function() {
+Countr.prototype._onHeaderEditorChange = function(event) {
+  this.name = event.detail;
   this._update();
 };
 

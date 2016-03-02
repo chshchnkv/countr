@@ -40,9 +40,10 @@ Editor.prototype._onEditorKeyDown = function(event) {
 
 Editor.prototype.set = function() {
   this._value = this.element.value;
-  var evt = document.createEvent('CustomEvent');
-  evt.initEvent('change', false, false, {});
-  this.element.dispatchEvent(evt);
+//  var evt = document.createEvent('CustomEvent');
+//  evt.initEvent('change', false, false, this._value);
+  var event = new CustomEvent('change', { 'detail': this._value });
+  this.element.dispatchEvent(event);
 };
 
 Editor.prototype.reset = function() {
