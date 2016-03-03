@@ -143,10 +143,4 @@ CountrData.prototype.getStateImageSrc = function() {
   return this.getActiveGame().getStateImageSrc(this);
 };
 
-/**
-* Удалить счётчик
-*/
-CountrData.prototype.delete = function() {
-  this.events._fireEvent('DeleteCountr', this);
-};
 export default CountrData;
