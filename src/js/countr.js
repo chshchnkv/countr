@@ -88,7 +88,10 @@ Countr.prototype.render = function() {
 Countr.prototype.update = function() {
   setTextContent(this._headerElement, `${this._data.getName()} ${this._data.getLoopName()}`);
   setTextContent(this._valueElement, this._data.getValue());
-  this._stateImage.src = this._data.getStateImageSrc();
+
+  let picture = this._data.getStateImage();
+  this._stateImage.parentNode.replaceChild(picture.img, this._stateImage);
+  this._stateImage = this.element.querySelector('.countr__state-image>img');
 };
 
 /**

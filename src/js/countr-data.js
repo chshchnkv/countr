@@ -139,8 +139,8 @@ CountrData.prototype.getActiveGame = function() {
 /**
 * Получить ссылку на изображение, соответствующее текущему значению счётчика в контексте текущей игры
 */
-CountrData.prototype.getStateImageSrc = function() {
-  return this.getActiveGame().getStateImageSrc(this);
+CountrData.prototype.getStateImage = function() {
+  return this.getActiveGame().getStateImage(this);
 };
 
 export default CountrData;

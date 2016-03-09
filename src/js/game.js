@@ -1,10 +1,12 @@
 import getElementFromTemplate from 'templates';
 import {setTextContent} from 'helpers';
+import Picture from 'picture';
 
 /// Конструктор Game для создания новых игр
 function Game(name, minimalValue) {
   this.name = name;
   this.minimalValue = minimalValue;
+//  this._blankStateImage = new Picture('./img/blank.png');
 }
 
 Game.prototype.initialValue = function() {
@@ -14,6 +16,8 @@ Game.prototype.initialValue = function() {
     return 0;
   }
 };
+
+Game.prototype._blankStateImage = new Picture('./img/blank.png');
 
 Game.prototype.loopSize = 0;
 
@@ -32,8 +36,8 @@ Game.prototype.isValidValue = function(value) {
   return value >= this.minimalValue;
 };
 
-Game.prototype.getStateImageSrc = function() {
-  return './img/blank.png';
+Game.prototype.getStateImage = function() {
+  return this._blankStateImage;
 };
 
 Game.prototype.render = function(id) {

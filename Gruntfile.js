@@ -43,6 +43,18 @@ module.exports = function(grunt) {
       }
     },
 
+    imagemin: {
+      images: {
+        options: {
+          optimizationLevel: 5
+        },
+        files: [{
+          expand: true,
+          src: ['build/img/**/*.{png,jpg,gif,svg}']
+        }]
+      }
+    },
+
     watch: {
       configFiles: {
         files: [ 'Gruntfile.js', 'config/*.js' ],
@@ -84,7 +96,7 @@ module.exports = function(grunt) {
 
       img: {
         files: ['src/img/**/*.jpg', 'src/img/**/*.png', 'src/img/*.jpg', 'src/img/*.png'],
-        tasks: ['copy:img'],
+        tasks: ['copy:img', 'imagemin'],
         options: {
           spawn: false,
           livereload: true
@@ -93,7 +105,7 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      build: ['build'],
+      build: ['build/css', 'build/fonts', 'build/img', 'build/*.html', 'build/*.php'],
       html: ['build/*.html', 'build/*.php']
     },
 
@@ -154,7 +166,8 @@ module.exports = function(grunt) {
     'sass',
     'cmq',
     'postcss',
-    'cssmin'
+    'cssmin',
+    'imagemin'
   ]);
 
   grunt.initConfig(config);
