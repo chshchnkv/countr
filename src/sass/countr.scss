@@ -61,16 +61,12 @@
 
     font-size: 3rem;
     color: $color-text-light;
-
-    .fa {
-      /// компенсация базовой линии
-      padding-top: 0.5rem;
-    }
   }
 
   &__value {
     position: relative;
     flex-grow: 1;
+    margin-left: 1rem;
     margin-right: 1rem;
 
     font-family: #{$ff-monospace};
@@ -132,6 +128,10 @@
       border-radius: 3px;
     }
   }
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 input[type=number]::-webkit-inner-spin-button,

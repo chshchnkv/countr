@@ -36,6 +36,11 @@ var headerTitleElement = document.querySelector('.countr-header__title');
 headerTitleElement.addEventListener('click', _onHeaderClick);
 
 /**
+ * Шапка приложения
+ */
+var headerElement = document.querySelector('.countr-header');
+
+/**
 * Кнопка добавления счётчика
 * @type {HTMLElement}
 */
@@ -104,11 +109,11 @@ window.addEventListener('scroll', function() {
   clearTimeout(scrollTimeOut);
   scrollTimeOut = setTimeout(function() {
     if (window.pageYOffset > 0) {
-      if (!headerTitleElement.classList.contains('countr-header--shadow')) {
-        headerTitleElement.classList.add('countr-header--shadow');
+      if (!headerElement.classList.contains('countr-header--shadow')) {
+        headerElement.classList.add('countr-header--shadow');
       }
     } else {
-      headerTitleElement.classList.remove('countr-header--shadow');
+      headerElement.classList.remove('countr-header--shadow');
     }
   }, 100);
 });
