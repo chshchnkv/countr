@@ -3,7 +3,7 @@ $countr-header: 'countr-header';
 .#{$countr-header} {
   @include transition;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
 
@@ -24,7 +24,6 @@ $countr-header: 'countr-header';
   }
 
   &__title {
-//    flex-grow: 1;
     position: relative;
 
     margin: 0;
@@ -70,9 +69,9 @@ $countr-header: 'countr-header';
   &__games {
     position: absolute;
     top: $header-height;
-    left: 0;
+    left: 0.5rem;
 
     font-size: 0.5em;
-
+    font-weight: 100;
   }
 }

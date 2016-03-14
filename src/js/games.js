@@ -9,7 +9,7 @@ function Games() {
   this.element.addEventListener('change', this._onGameChange);
 
   /// создаем игры
-  this.noGame = new Game('Без игры', -Infinity);
+  this.noGame = new Game('Просто счётчик', -Infinity);
   this.noGame.isOver = function() {
     return false;
   };
@@ -51,7 +51,7 @@ Games.prototype.toggle = function() {
 };
 
 Games.prototype._onGameChange = function() {
-  this.toggle();
+  this.hide();
 };
 
 export default Games;

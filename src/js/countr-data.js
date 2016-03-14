@@ -93,6 +93,7 @@ CountrData.prototype.resetValue = function() {
 
     }, TOTAL_RESET_TIME / TIMES);
   }
+  this.events._fireEvent('ResetValue', newValue);
 };
 
 /**

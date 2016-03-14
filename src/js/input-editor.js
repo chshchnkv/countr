@@ -1,16 +1,23 @@
 function Editor(element, initValue) {
+  this.init(element, initValue);
+}
+
+Editor.prototype.init = function(element, initValue) {
   this.element = element;
   this._value = initValue;
   this._onEditorBlur = this._onEditorBlur.bind(this);
   this._onEditorKeyDown = this._onEditorKeyDown.bind(this);
-}
+};
 
 Editor.prototype.show = function() {
   this.element.value = this._value;
   this.element.addEventListener('blur', this._onEditorBlur);
   this.element.addEventListener('keydown', this._onEditorKeyDown);
   this.element.classList.remove('hidden');
-  this.element.setSelectionRange(0, this.element.value.length);
+
+  if (this.element.type !== 'number') {
+    this.element.setSelectionRange(0, this.element.value.length);
+  }
   this.element.focus();
 };
 
@@ -37,8 +44,20 @@ Editor.prototype._onEditorKeyDown = function(event) {
   }
 };
 
+/**
+* Проверка значения на валидность. В базовой реализации всегда возвращает true.
+* Дочерние классы могут через этот метод влиять на результат работы commit
+*@return {boolean}
+*/
+Editor.prototype.validate = function() {
+  return true;
+};
+
+/**
+* Коммит значения, введенного пользователем. Если значение проходит валидацию, то бросается кастомное событие changevalue в котором передается новое значение.
+*/
 Editor.prototype._commit = function() {
-  if (this._value !== this.element.value) {
+  if ((this._value !== this.element.value) && this.validate(this.element.value)) {
     this._value = this.element.value;
     var event = new CustomEvent('changevalue', { 'detail': this._value });
     this.element.dispatchEvent(event);
