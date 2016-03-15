@@ -1,7 +1,9 @@
 $color-text-dark: #000;
 $color-text-light: #fff;
 $color-header-bg: #e4e4e4;
+$color-btn-active: #00c0ff;
 $colors-count: 20;
+
 @for $i from 1 through $colors-count {
   .color-#{$i} {
     $color: hsl($i * ($colors-count - 1), 60, 70);

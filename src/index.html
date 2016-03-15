@@ -35,8 +35,50 @@
     <h1 class="countr-header__title">countr<span class="countr-header__current-game"></span></h1>
 
     <div class="countr-header__buttons">
-      <div class="countr-header__reset  countr-btn"><i class="fa  fa-refresh"></i></div>
-      <div class="countr-header__add  countr-btn"><i class="fa  fa-plus"></i></div>
+<!--
+      <div class="countr-header__button  countr-header__sort  countr-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="41.125" height="30" viewBox="0 0 41.125 62.594">
+          <switch>
+            <g>
+              <g>
+                <path id="_" data-name="icon-sort-asc" class="icon  icon-sort-asc" d="M168.47,93.28h-36a2.557,2.557,0,0,0-1.808,4.379l18,18a2.524,2.524,0,0,0,3.616,0l18-18a2.572,2.572,0,0,0-1.808-4.379h0Z" transform="translate(-129.906 -53.844)"/>
+              </g>
+              <g>
+                <path id="_2" data-name="icon-sort-desc" class="icon  icon-sort-desc" d="M170.278,72.615l-18-18a2.523,2.523,0,0,0-3.616,0l-18,18a2.571,2.571,0,0,0,1.808,4.379h36a2.557,2.557,0,0,0,1.808-4.379h0Z" transform="translate(-129.906 -53.844)"/>
+              </g>
+            </g>
+          <foreignObject>
+            <img src="./img/sort.png" alt="sort" width="30" height="30">
+          </foreignObject>
+          </switch>
+        </svg>
+
+      </div>
+-->
+      <div class="countr-header__button  countr-header__reset  countr-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 61.719 61.719">
+          <switch>
+            <g>
+              <path id="_" data-name="icon-reset" class="icon  icon-reset  icon-active" d="M286.227,90.662a1.239,1.239,0,0,0-.9-0.382h-7.715a1.205,1.205,0,0,0-1.2.924,48.431,48.431,0,0,1-2.13,4.7,20.494,20.494,0,0,1-17.517,9.8,20.037,20.037,0,0,1-7.514-1.447,20.72,20.72,0,0,1-6.469-4.1l5.5-5.5a2.572,2.572,0,0,0-1.808-4.379h-18a2.608,2.608,0,0,0-2.572,2.572v18a2.558,2.558,0,0,0,4.38,1.808l5.183-5.183a30.686,30.686,0,0,0,9.783,6.308,30.128,30.128,0,0,0,11.351,2.209,29.453,29.453,0,0,0,19.2-6.689,31.218,31.218,0,0,0,10.768-17.458,0.7,0.7,0,0,0,.04-0.281A1.238,1.238,0,0,0,286.227,90.662Zm0.622-33.047a2.523,2.523,0,0,0-3.616,0L278.01,62.8a31.127,31.127,0,0,0-9.844-6.288,30.315,30.315,0,0,0-11.41-2.23,29.669,29.669,0,0,0-19.286,6.69,31.342,31.342,0,0,0-10.848,17.458v0.281a1.3,1.3,0,0,0,1.285,1.286h8a1.2,1.2,0,0,0,1.205-.924,48.611,48.611,0,0,1,2.13-4.7,20.493,20.493,0,0,1,17.518-9.8,19.964,19.964,0,0,1,14.022,5.5l-5.545,5.545a2.571,2.571,0,0,0,1.808,4.379h18a2.608,2.608,0,0,0,2.572-2.571v-18A2.472,2.472,0,0,0,286.849,57.615Z" transform="translate(-225.906 -54.281)"/>
+            </g>
+            <foreignObject>
+              <img src="./img/reset.png" >
+            </foreignObject>
+          </switch>
+        </svg>
+      </div>
+      <div class="countr-header__button  countr-header__add  countr-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 56.563 56.563">
+          <switch>
+            <g>
+              <path id="_" data-name="icon-add" class="icon  icon-add  icon-active" d="M379.345,78.977a3.722,3.722,0,0,0-2.732-1.125H359.9V61.137a3.841,3.841,0,0,0-3.857-3.857h-7.714a3.841,3.841,0,0,0-3.857,3.857V77.852H327.756a3.841,3.841,0,0,0-3.858,3.857v7.714a3.841,3.841,0,0,0,3.858,3.857H344.47v16.714a3.841,3.841,0,0,0,3.857,3.858h7.714a3.841,3.841,0,0,0,3.857-3.858V93.28h16.715a3.841,3.841,0,0,0,3.857-3.857V81.709A3.724,3.724,0,0,0,379.345,78.977Z" transform="translate(-323.906 -57.281)"/>
+            </g>
+            <foreignObject>
+              <img src="./img/add.svg" alt="add" width="30" height="30">
+            </foreignObject>
+          </switch>
+        </svg>
+      </div>
     </div>
 
     <form class="countr-header__games  countr-games  hidden" action="">
@@ -50,7 +92,7 @@
 
   <template id="countr">
     <article class="countr">
-      <div class="countr__delete  countr-btn  countr-btn--half  fa fa-times"></div>
+      <div class="countr__delete  countr-btn  countr-btn--half">&times;</div>
 
       <h2 class="countr__header"><input type="text" class="countr__header-editor  hidden"></h2>
 

@@ -52,8 +52,10 @@ $countr-header: 'countr-header';
 
   &__buttons {
     display: flex;
-    font-size: 0.6em;
-    color: #00c0ff;
+  }
+
+  &__button {
+    padding: 0.7rem;
   }
 
   &__current-game {

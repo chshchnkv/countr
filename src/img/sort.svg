@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41.125" height="62.594" viewBox="0 0 41.125 62.594">
+  <switch>
+    <g>
+      <g>
+        <path id="_" data-name="icon-sort-asc" class="icon-sort-asc" d="M168.47,93.28h-36a2.557,2.557,0,0,0-1.808,4.379l18,18a2.524,2.524,0,0,0,3.616,0l18-18a2.572,2.572,0,0,0-1.808-4.379h0Z" transform="translate(-129.906 -53.844)"/>
+      </g>
+      <g>
+        <path id="_2" data-name="icon-sort-desc" class="icon-sort-desc" d="M170.278,72.615l-18-18a2.523,2.523,0,0,0-3.616,0l-18,18a2.571,2.571,0,0,0,1.808,4.379h36a2.557,2.557,0,0,0,1.808-4.379h0Z" transform="translate(-129.906 -53.844)"/>
+      </g>
+    </g>
+  </switch>
+</svg>

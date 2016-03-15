@@ -1,0 +1,8 @@
+.icon {
+  fill-rule: evenodd;
+  fill: transparentize($color-text-dark, 0.5);
+
+  &-active {
+    fill: $color-btn-active;
+  }
+}

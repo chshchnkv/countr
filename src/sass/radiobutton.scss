@@ -37,7 +37,7 @@ $grey--lighter: grey;
         width: $radio-size;
         height: $radio-size;
 
-        font-family: 'FontAwesome';
+//        font-family: 'FontAwesome';
 
         @include transition;
       }
@@ -53,7 +53,12 @@ $grey--lighter: grey;
       &+label {
         font-weight: bolder;
         &:before {
-          content: $fa-var-check;
+//          content: $fa-var-check;
+          content: '';
+          background-image: url('../img/check.svg');
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
         }
 
         &:active:before {

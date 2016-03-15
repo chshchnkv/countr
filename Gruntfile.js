@@ -95,7 +95,7 @@ module.exports = function(grunt) {
       },
 
       img: {
-        files: ['src/img/**/*.jpg', 'src/img/**/*.png', 'src/img/*.jpg', 'src/img/*.png'],
+        files: ['src/img/**/*.jpg', 'src/img/**/*.png', 'src/img/**/*.svg'],
         tasks: ['copy:img', 'imagemin'],
         options: {
           spawn: false,
