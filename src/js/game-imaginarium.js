@@ -26,41 +26,6 @@ function GameImaginarium() {
 inherit(GameImaginarium, Game);
 
 /**
- * Проверка текущего значения счёта и поправка его на круговое значение
- * @param   {number} curLoop  текущий круг
- * @param   {number} newValue новое значение счёта
- * @returns {object} объект с новым значением круга и скорректированным значением счёта
- */
-GameImaginarium.prototype.validateValue = function(curLoop, newValue) {
-
-  if (newValue < this.minimalValue) {
-    curLoop--;
-    newValue = this.loopSize;
-  } else if (newValue > this.loopSize) {
-    curLoop++;
-    newValue = this.minimalValue;
-  }
-/*
-  if (newValue > this.loopSize) {
-    curLoop = Math.floor(newValue / this.loopSize);
-    newValue %= this.loopSize;
-  } else if (newValue < this.minimalValue) {
-    curLoop = Math.floor((newValue - this.minimalValue) / this.loopSize);
-    if (newValue === 0) {
-      newValue = this.loopSize;
-    } else {
-      newValue = Math.abs(newValue) % this.loopSize;
-    }
-  }
-*/
-
-  return {
-    'newValue': newValue,
-    'newLoop': curLoop
-  };
-};
-
-/**
  * Возвращает изображение, соответствующее текущему значению счёта
  * @param   {Countr}  countr - счётчик, который проверяем
  * @returns {Picture} Изображение, соответствующее текущему значению счёта

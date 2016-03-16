@@ -54,12 +54,26 @@ Game.prototype.isOver = function(countr) {
 /**
  * Проверка значения - для круговых игр позволяет зацикливать и увеличивать/уменьшать значение текущего круга в игре
  * @param   {number} curLoop - Текущий круг в игре
- * @param   {number} value   - Текущее значение счёта
+ * @param   {number} newValue   - Текущее значение счёта
  * @returns {object} Объект с новым значением круга и новым значением счёта
  */
-Game.prototype.validateValue = function(curLoop, value) {
+Game.prototype.validateValue = function(curLoop, newValue) {
+  if (this.loopSize !== 0) {
+    if (newValue > this.loopSize) {
+      curLoop += Math.floor(newValue / this.loopSize);
+      newValue %= this.loopSize;
+    } else if (newValue < this.minimalValue) {
+      curLoop += Math.floor((newValue - this.minimalValue) / this.loopSize);
+      if (newValue === 0) {
+        newValue = this.loopSize;
+      } else {
+        newValue = Math.abs(newValue) % this.loopSize;
+      }
+    }
+  }
+
   return {
-    'newValue': value,
+    'newValue': newValue,
     'newLoop': curLoop
   };
 };
