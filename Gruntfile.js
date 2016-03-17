@@ -50,7 +50,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ['build/img/**/*.{png,jpg,gif,svg}']
+          cwd: 'src/img/',
+          src: ['**/*.{png,jpg,gif,svg}'],
+          dest: 'build/img/'
         }]
       }
     },
@@ -96,7 +98,7 @@ module.exports = function(grunt) {
 
       img: {
         files: ['src/img/**/*.jpg', 'src/img/**/*.png', 'src/img/**/*.svg'],
-        tasks: ['copy:img', 'imagemin'],
+        tasks: [/*'copy:img', */'imagemin'],
         options: {
           spawn: false,
           livereload: true
@@ -116,7 +118,7 @@ module.exports = function(grunt) {
           cwd: 'src',
           src: [
             'fonts/**',
-            'img/**',
+//            'img/**',
             '*.html',
             '*.php'
           ],
@@ -133,14 +135,14 @@ module.exports = function(grunt) {
         }]
       },
 
-      img: {
-        files: [{
-          expand: true,
-          cwd: 'src',
-          src: ['img/**'],
-          dest: 'build'
-        }]
-      },
+//      img: {
+//        files: [{
+//          expand: true,
+//          cwd: 'src',
+//          src: ['img/**'],
+//          dest: 'build'
+//        }]
+//      },
 
       fonts: {
         files: [{
