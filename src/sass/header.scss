@@ -33,7 +33,7 @@ $countr-header: 'countr-header';
     font-size: 1em;
     line-height: 1;
     font-weight: 100;
-    text-transform: lowercase;
+//    text-transform: lowercase;
 
     cursor: pointer;
     user-selection: none;
@@ -65,7 +65,7 @@ $countr-header: 'countr-header';
 
     display: block;
 
-    font-size: 0.2em;
+    font-size: 0.175em;
   }
 
   &__games {

@@ -1,6 +1,7 @@
 import Games from'games';
 import CountrData from 'countr-data';
 import Countr from 'countr';
+import {setTextContent} from 'helpers';
 
 /**
 * Все счётчики приложения
@@ -34,6 +35,12 @@ var countrsContainer = document.querySelector('.countr-container');
 */
 var headerTitleElement = document.querySelector('.countr-header__title');
 headerTitleElement.addEventListener('click', _onHeaderClick);
+
+/**
+ * Заголовок выбранной игры
+ * @type {HTMLElement}
+ */
+var headerGameTitle = document.querySelector('.countr-header__current-game');
 
 /**
  * Шапка приложения
@@ -79,6 +86,19 @@ function resetCountrs() {
 }
 
 /**
+ * Обновить название игры в заголовке
+ */
+
+function updateGame() {
+  let game = gamesList.getActiveGame();
+  if (game === gamesList.noGame) {
+    setTextContent(headerGameTitle, '');
+  } else {
+    setTextContent(headerGameTitle, game.name);
+  }
+}
+
+/**
 * Обработчик запроса на удаление счётчика
 */
 window._onDeleteCountr = function(countr) {
@@ -87,6 +107,7 @@ window._onDeleteCountr = function(countr) {
 };
 
 function _onGameChange() {
+  updateGame();
   resetCountrs();
 }
 
