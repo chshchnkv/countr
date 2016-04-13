@@ -6,11 +6,17 @@
   align-items: center;
   justify-content: center;
 
+  flex-grow: 0;
+  flex-shrink: 0;
+
   width: $default-size;
   height: $default-size;
 
   user-select: none;
   cursor: pointer;
+
+  opacity: 0.5;
+
 
   &--half {
     width: ($default-size / 2);
@@ -29,6 +35,10 @@
 
   & > * {
     @include outline($color: blue);
+  }
+
+  &:hover {
+    opacity: 1;
   }
 
   &:active {

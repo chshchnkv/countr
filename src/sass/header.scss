@@ -16,7 +16,7 @@ $countr-header: 'countr-header';
   height: $header-height;
   padding: $default-padding;
 
-  font-size: 5rem;
+  font-size: 4rem;
   background-color: transparentize($color-header-bg, 0.1);
 
   &--shadow {
@@ -65,7 +65,7 @@ $countr-header: 'countr-header';
 
     display: block;
 
-    font-size: 0.175em;
+    font-size: 0.2em;
   }
 
   &__games {

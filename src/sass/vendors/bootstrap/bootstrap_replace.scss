@@ -1,0 +1,55 @@
+@mixin make-row-flex() {
+  display: flex;
+  flex-wrap: wrap;
+
+  > [class *= "col-"] {
+    float: none;
+    display: flex;
+
+    @media (min-width: $screen-sm) {
+      padding-top: ($grid-gutter-width / 2);
+      padding-bottom: ($grid-gutter-width / 2);
+    }
+
+    > * {
+      flex-grow: 1;
+    }
+  }
+}
+
+
+[class *= "container"] {
+  position: relative;
+
+  &:before, &:after {
+    content: none;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    padding: 0;
+  }
+}
+
+.row {
+
+  &:before, &:after {
+    content: none;
+  }
+
+
+  &--inline-blocks {
+    font-size: 0;
+
+    > [class *= "col-"] {
+      float: none;
+      display: inline-block;
+      vertical-align: top;
+      font-size: $font-size-base;
+    }
+  }
+
+
+  &--flex {
+    @include make-row-flex();
+  }
+}

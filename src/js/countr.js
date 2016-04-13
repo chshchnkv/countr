@@ -51,7 +51,8 @@ Countr.prototype._onNameChange = function(newName) {
 */
 Countr.prototype.render = function() {
   this.element = getElementFromTemplate('countr');
-  this.element.classList.add('color-' + getRandomColorIndex());
+  this.countrElement = this.element.querySelector('.countr');
+  this.countrElement.classList.add('color-' + getRandomColorIndex());
 
   this._deleteElement = this.element.querySelector('.countr__delete');
   this._deleteElement.addEventListener('click', this._onDelete);

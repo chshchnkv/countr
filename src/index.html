@@ -84,27 +84,30 @@
   </header>
 
 
-  <main class="countr-container">
+  <main class="container-fluid">
+    <div class="countr-container  row  row--flex"></div>
   </main>
 
 
   <template id="countr">
-    <article class="countr">
-      <div class="countr__delete  countr-btn  countr-btn--half">&times;</div>
+    <div class="col-xs-12  col-sm-6  col-md-4  col-lg-3">
+      <article class="countr">
+        <div class="countr__delete  countr-btn  countr-btn--half">&times;</div>
 
-      <h2 class="countr__header"><input type="text" class="countr__header-editor  hidden"></h2>
+        <h2 class="countr__header"><input type="text" class="countr__header-editor  hidden"></h2>
 
-      <div class="countr__controls">
-        <div class="countr__sub  countr-btn  countr-btn--circle"><span>–</span></div>
+        <div class="countr__controls">
+          <div class="countr__sub  countr-btn  countr-btn--circle"><span>–</span></div>
 
-        <div class="countr__state-image  invisible"><a href="#" class="countr__state-image-link"><img src="" alt=""><span class="countr__state-image-alt  hidden"></span></a></div>
+          <div class="countr__state-image  invisible"><a href="#" class="countr__state-image-link"><img src="" alt=""><span class="countr__state-image-alt  hidden"></span></a></div>
 
-        <div class="countr__value"><input type="number" class="countr__value-editor  hidden"></div>
+          <div class="countr__value"><input type="number" class="countr__value-editor  hidden"></div>
 
-        <div class="countr__add  countr-btn  countr-btn--circle"><span>+</span></div>
-      </div>
+          <div class="countr__add  countr-btn  countr-btn--circle"><span>+</span></div>
+        </div>
 
-    </article>
+      </article>
+    </div>
   </template>
 
   <template id="template-game">

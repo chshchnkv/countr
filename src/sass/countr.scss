@@ -3,7 +3,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  max-width: 100%;
+
   padding: $default-padding;
+
+  @media (min-width: $screen-sm) {
+    border-radius: 0.5rem;
+  }
 
   &__header {
     position: relative;
@@ -12,6 +19,7 @@
     margin: 0;
     padding: 0;
 
+    font-size: 1.8rem;
     font-weight: 100;
     text-align: center;
 
@@ -42,11 +50,6 @@
     @include transition;
 
     font-size: 1.5em;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 1;
-    }
   }
 
   &__add, &__sub {
@@ -76,6 +79,9 @@
     text-align: right;
 
     user-select: none;
+
+    overflow: hidden;
+    text-overflow: clip;
 
     &-editor {
       @include transition;
